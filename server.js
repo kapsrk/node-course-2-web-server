@@ -4,6 +4,8 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+const port = process.env.PORT || 3000;
+
 var app = express();
 
 hbs.registerPartials((__dirname + '/views/partials'));
@@ -76,6 +78,11 @@ app.get('/bad', (req, res) => {
 });
 
 //app.listen(3000);
-app.listen(3000, () => {
-    console.log('Server is up')
+// app.listen(3000, () => {
+//     console.log('Server is up')
+// });
+
+//heroku - use env var instead of static port
+app.listen(port, () => {
+    console.log(`Server is up and running on port ${port}`)
 });
